@@ -1,19 +1,21 @@
 plugins {
 	id 'maven-publish'
-	id 'distribution'
+	id 'distribution'	
 }
 
-group = 'zeunisse.svws.nrw.de'
-version = '0.0.1-SNAPSHOT'
+group = 'experimental.svws.nrw.de'
+version = '0.1.1'
+
+
 
 publishing {
     publications {
         mavenZip(MavenPublication) {
-            artifact  distZip
-            artifactId = 'svws-nrw-zeugnisse'
+            artifact  'build/dist.zip'
+            artifactId = 'svws-experimental'
             pom {
-                name = 'SVWS NRW Zeugnisse'
-                description = 'Diese Bibliothek stellt die ZIP-Archive für den Zeugnisdownload Sek1 in NRW bereit.'
+                name = 'SVWS Installer Test'
+                description = 'Diese Bibliothek stellt die ZIP-Archive für den Installer bereit.'
                 url = 'http://www.svws.nrw.de'
                 licenses {
                     license {
@@ -22,11 +24,20 @@ publishing {
                     }
                 }
                 scm {
-        			connection = 'scm:git@github.com/FPfotenhauer/Zeugnisse-NRW.git'
-        			developerConnection = 'scm:git@github.com/FPfotenhauer/Zeugnisse-NRW.git'
-                    url = 'https://github.com/FPfotenhauer/Zeugnisse-NRW.git'
+        			connection = 'scm:git@github.com/FPfotenhauer/SVWS-Experimental'
+        			developerConnection = 'scm:git@github.com/FPfotenhauer/SVWS-Experimental.git'
+                    url = 'https://github.com/FPfotenhauer/SVWS-Experimental.git'
                 }
             }
         }
     }
 }
+
+
+task doZip(type: Zip) {
+    archiveFileName = "dist.zip"
+    destinationDirectory = file("$buildDir")
+    from "files"
+}
+
+build.dependsOn doZip

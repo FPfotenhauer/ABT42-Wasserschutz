@@ -1,0 +1,4 @@
+J=-A-B-C-D-E-F-G-H-M-N-P-W-V-
+H=-A-B-C-D-E-F-G-M-N-P-W-V-
+G=-A-B-C-D-E-F-O-
+F=-A-B-C-D-E-O
